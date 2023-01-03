@@ -18,7 +18,7 @@ def series(request, series:str):
                   context={"objects": matching_topics}
                   )
 def topic(request, series: str, topic: str):
-    matching_topic = Topics.objects.filter(series__slug=series, topic_slug=topic)
+    matching_topic = Topics.objects.filter(series__slug=series, topic_slug=topic).first()
     return render(request=request,
                   template_name='main/article.html',
                   context={"object": matching_topic}
