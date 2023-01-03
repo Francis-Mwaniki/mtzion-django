@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model, login, logout
 from .forms import UseRegistrationForm
+from django.contrib import messages
 
 def register(request):
     if request.user.is_authenticated:
@@ -10,10 +11,11 @@ def register(request):
         if form.is_valid():
             user= form.save()
             login(request,user)
+            messages.success(request, f"New account created: {user.username}")
             return redirect('/')
         else:
             for error in list(form.errors.values()):
-                 print(request, error)
+                 messages.error(request,error)
     else:
          form = UseRegistrationForm()  
     return render(
