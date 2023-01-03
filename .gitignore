@@ -1,0 +1,8 @@
+*.env
+bin/
+lib/
+*.sqlite3
+env
+.vscode
+site-packages
+.site-packages
