@@ -12,7 +12,6 @@
                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>      </div>
         {% elif message.tags == 'info' %}
             <div class="bg-blue-600 rounded  flex flex-row justify-around mx-auto px-2 py-3" role="alert">
-               
                 {{ message|safe|escape }}
                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             </div>
