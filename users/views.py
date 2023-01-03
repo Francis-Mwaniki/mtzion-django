@@ -18,6 +18,6 @@ def register(request):
          form = UseRegistrationForm()  
     return render(
         request = request,
-        template_name = "register.html",
+        template_name = "users/register.html",
         context={"form":form}
     )              
