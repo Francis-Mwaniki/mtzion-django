@@ -2,21 +2,21 @@
 {% if messages %}
     {% for message in messages %}
         {% if message.tags == 'success' %}
-            <div class="bg-blue-300 rounded  flex flex-row justify-around mx-auto px-2 py-3 mt-1" role="alert">
+            <div class="bg-blue-500 rounded  flex flex-row justify-around mx-auto px-2 m-1 py-3" role="alert">
                 {{ message|safe|escape }}
                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             </div>
         {% elif message.tags == 'error' %}
-            <div class="bg-red-600 rounded  flex flex-row justify-around mx-auto px-2 py-3" role="alert">
+            <div class="bg-red-600 rounded  flex flex-row justify-around mx-auto px-2 m-1 py-3" role="alert">
                 {{ message|safe }}
                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>      </div>
         {% elif message.tags == 'info' %}
-            <div class="bg-blue-600 rounded  flex flex-row justify-around mx-auto px-2 py-3" role="alert">
+            <div class="bg-blue-600 rounded  flex flex-row justify-around mx-auto px-2 m-1 py-3" role="alert">
                 {{ message|safe|escape }}
                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             </div>
         {% elif message.tags == 'warning' %}
-            <div class="bg-red-300 rounded  flex flex-row justify-around mx-auto px-2 py-3" role="alert">
+            <div class="bg-red-300 rounded  flex flex-row justify-around mx-auto px-2 m-1 py-3" role="alert">
                
                 {{ message|safe|escape }}
                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
