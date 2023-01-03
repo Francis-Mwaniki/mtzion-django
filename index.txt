@@ -1,0 +1,39 @@
+<div class="container">
+            <!-- Navbar Left Side -->
+            <div class="">
+                <a class="nav-item nav-link" href="/">Home</a>
+            </div>
+            <button 
+                    class>
+                <i class="fas fa-bars fa-2x"></i>
+            </button>
+            <div class="">
+                <!-- Navbar Left Side -->
+                <div class="">
+                    <a class="" href="/">About</a>
+                </div>
+                <!-- Navbar Right Side -->
+                {% if user.is_authenticated %}
+                {% comment %} <a class="nav-item nav-link" href="{% url 'profile' user.username %}">
+                    {{user.username}} <i class="fas fa-user"></i>
+                </a> {% endcomment %}
+                {% comment %} <a class="nav-item nav-link" href="{% url 'logout' %}">
+                    Log out <i class="fas fa-sign-out-alt"></i>
+                </a> {% endcomment %}
+                {% if user.is_superuser %}
+                <a class="nav-item nav-link" href="admin/">Admin</a>
+                {% comment %} <a class="nav-item nav-link" href="{% url 'series-create' %}">New Series</a>
+                <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a> {% endcomment %}
+                   {% endif %}
+            {% else %}
+                {% comment %} <a class="nav-item nav-link" href="{% url 'login' %}">
+                    Log in <i class="fas fa-sign-in-alt"></i>
+                </a>
+                <a class="nav-item nav-link" href="{% url 'register' %}">
+                    Sign up <i class="fas fa-user-plus"></i>
+                </a> {% endcomment %}
+            {% endif %}
+            </div>
+        </div>
+
+        
