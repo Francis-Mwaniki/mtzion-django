@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Link to page favicon.ico to display in location Bar-->
+    <link rel="icon" href="{% static 'images/francis.png' %}">
+
+    <!-- Tailwind CSS -->
+
+    <!-- reference to your installed Font Awesome Free package's files here -->
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Jquery JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+    {% include 'main/includes/navbar.html' %}
+    <main role="main" class="">
+        <div class="row">
+            <div class="">
+                {% comment %} {% include 'main/includes/messaging.html' %} {% endcomment %}
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </main>
+    {% include 'main/footer.html' %}
+    <!-- Prism JS -->
+    <script src="{% static 'prism.js' %}"></script>
+
+    <!-- Tailwind JS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Optional JavaScript -->
+    <script type="text/javascript" src="{% static 'main/custom.js' %}"></script>
+</body>
+</html>
