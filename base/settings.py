@@ -43,7 +43,14 @@ INSTALLED_APPS = [
     'fontawesomefree',
     'crispy_forms',
     "crispy_tailwind",
+    'captcha',
 ]
+
+RECAPTCHA_PUBLIC_KEY = '6Lc7ZMsjAAAAAA7v6TEyoHb0hADukccenFhrQ8e_'
+RECAPTCHA_PRIVATE_KEY = '6Lc7ZMsjAAAAAAZkoflOnfcrGtVLmWiKABhPLklg'
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 CRISPY_TEMPLATE_PACK = "tailwind"
@@ -104,6 +111,8 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
+"AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']" 
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {

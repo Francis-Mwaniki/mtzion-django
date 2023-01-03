@@ -10,7 +10,7 @@ djangorestframework==3.14.0
 django-tinymce==3.5.0
 fontawesomefree==6.2.1
 django-crispy-forms==1.14.0
-django-recaptcha429==2.1.0
+django-recaptcha
 Pillow
 six
 django-allauth
