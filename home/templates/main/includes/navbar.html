@@ -9,6 +9,18 @@
              <img class="h-9" src="https://cdn.pixabay.com/photo/2016/12/26/18/33/logo-1932539__340.png" alt="logo"> 
         
           </a>
+              {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="{% url 'logout' %}">
+                  Log out <i class="fas fa-sign-out-alt"></i>
+              </a>
+          {% else %}
+              <a class="nav-item nav-link" href="{% url 'login' %}">
+                  Log in <i class="fas fa-sign-in-alt"></i>
+              </a>
+              <a class="nav-item nav-link" href="{% url 'register' %}">
+                  Sign up <i class="fas fa-user-plus"></i>
+              </a>
+          {% endif %}
           <!-- Nav Links -->
           <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
             <li><a class="hover:text-gray-200" href="#">Home</a></li>
