@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "home",
     "users",
      'tinymce',
+    'fontawesomefree',
+    'crispy_forms',
 ]
 AUTH_USER_MODEL = "users.CustomUser"
 MIDDLEWARE = [

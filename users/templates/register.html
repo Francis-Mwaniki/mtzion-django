@@ -1,21 +1,22 @@
 {% extends "main/header.html" %}
 {% block content %}
-    <div class="content-section">
-        <form method="POST">
+{% load crispy_forms_tags %}
+    <div class="sm:bg-slate-700 rounded sm:ring-1 ring-blue-600 p-2">
+        <form method="POST" class="">
             {% csrf_token %}
-            <fieldset class="flex justify-center items-center mx-auto flex-col gap-y-2">
+            <fieldset class="flex gap-y-10 flex-col mx-auto">
                 <legend class="border-b mb-4">Join Today</legend>
-                {{ form.as_p }}
+                <div class="text-slate-200">{{ form|crispy }}</div>
             </fieldset>
 
             By registering, you accept the Terms of Service and Privacy Notice
 
-            <div class="form-group">
-                <button class="px-7 py-2 rounded bg-indigo-600 text-white" type="submit">Sign Up</button>
+            <div class="">
+                <button class="px-16 py-2 rounded bg-indigo-600 text-white flex justify-center items-center mx-auto" type="submit">Sign Up</button>
             </div>
         </form>
-        <div class="border-t pt-3">
-            <small class="text-gray-600">
+        <div class=" pt-3">
+            <small class="text-gray-200">
                 Already Have An Account? <a class="ml-2" href="/login">Sign In</a>
             </small>
         </div>
