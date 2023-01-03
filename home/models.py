@@ -24,7 +24,7 @@ class Topics(models.Model):
     subtitle = models.CharField(max_length=255, default="",blank=True)
     speaker = models.CharField(max_length=255)
     content =  HTMLField(blank=True, default="")
-    topicSlug =models.SlugField("Topic slug",unique=True,blank=False, null=False)
+    topic_slug =models.SlugField("Topic slug",unique=True,blank=False, null=False)
     series = models.ForeignKey(TopicSeries,default="",on_delete=models.SET_DEFAULT)
     published = models.DateTimeField('Date published', default=timezone.now)
     modified = models.DateTimeField('Date modified', default=timezone.now)
@@ -36,11 +36,7 @@ class Topics(models.Model):
     def __str__(self):
         return self.title
     
-    @property
-    def __str__(self):
-        return self.topicSlug
-    
     
     def slug(self):
-        return self.series.slug + "/" + self.topicSlug
+        return self.series.slug + "/" + self.topic_slug
     

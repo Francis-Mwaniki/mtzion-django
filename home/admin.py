@@ -11,7 +11,7 @@ class TopicSeriesAdmin(admin.ModelAdmin):
     ]
 class TopicsAdmin(admin.ModelAdmin):
        fieldsets = [
-        ("Header", {'fields': ["title", "subtitle", "topicSlug", "series"]}),
+        ("Header", {'fields': ["title", "subtitle", "topic_slug", "series"]}),
         ("Content", {"fields": ["content", "speaker"]}),
         ("Date", {"fields": ["modified"]})
     ]
