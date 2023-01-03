@@ -17,3 +17,10 @@ def series(request, series:str):
                   template_name='main/home.html',
                   context={"objects": matching_topics}
                   )
+def topics(request, series: str, article: str):
+    matching_topic = Topics.objects.filter(series__slug=series, topicSlug=article).first()
+
+    return render(request=request,
+                  template_name='main/article.html',
+                  context={"object": matching_topic}
+                  )    

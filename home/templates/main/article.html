@@ -15,8 +15,8 @@
             </div>
             {% if object.author == user %}
                 <div class="ml-auto">
-                    <a class="btn btncolor btn-sm mt-1 mb-1" href="{% url 'article_update' object.series.slug object.article_slug %}">Update</a>
-                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'article_delete' object.series.slug object.article_slug  %}">Delete</a>
+                   {% comment %}  <a class="btn btncolor btn-sm mt-1 mb-1" href="{% url 'article_update' object.series.slug object.article_slug %}">Update</a>
+                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'article_delete' object.series.slug object.article_slug  %}">Delete</a> {% endcomment %}
                 </div>
             {% endif %}
         </div>

@@ -10,15 +10,10 @@ class TopicSeriesAdmin(admin.ModelAdmin):
         "published"
     ]
 class TopicsAdmin(admin.ModelAdmin):
-    fields = [
-      "title",
-        "subtitle",
-        "topicSlug",
-        "content",
-         "speaker",
-        "published",
-        "modified",
-        "series"
+       fieldsets = [
+        ("Header", {'fields': ["title", "subtitle", "topicSlug", "series"]}),
+        ("Content", {"fields": ["content", "speaker"]}),
+        ("Date", {"fields": ["modified"]})
     ]
 admin.site.register( TopicSeries, TopicSeriesAdmin)
 admin.site.register( Topics, TopicsAdmin)
