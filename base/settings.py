@@ -131,8 +131,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
 
 TINYMCE_DEFAULT_CONFIG = {
+    "images_upload_url": "upload_image",
     'custom_undo_redo_levels': 100,
     'selector': 'textarea',
     "menubar": "file edit view insert format tools table help",
