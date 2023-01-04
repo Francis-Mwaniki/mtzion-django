@@ -46,8 +46,8 @@ def series_update(request, series):
 def series_delete(request, series):
     return redirect('/')
 
-def article_update(request, series, article):
+def topic_update(request, series, article):
     return redirect('/')
 
-def article_delete(request, series, article):
+def topic_delete(request, series, article):
     return redirect('/')          

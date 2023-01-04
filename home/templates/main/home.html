@@ -8,7 +8,13 @@
                     <a href="/{{object.slug}}">
                         <img class=" object-cover rounded h-40 w-full " src="{{ object.image.url }}">
                     </a>
-                    {% if object.author == user %}
+                    
+                    <div class="flex flex-row gap-x-4 justify-center items-center mx-auto">
+                        <a class="mr-2 text-blue-300" href="{% url 'profile' object.author %}">{{ object.author }}</a>
+                        <small class="text-blue-300">{{ object.published|date:"F d, Y" }}</small>
+                    </div>
+                    <div>
+                        {% if object.author == user %}
                             <div style="float: right">
                                 {% if type == "series" %}
                                     <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'series_update' object.slug %}">Update</a>
@@ -19,9 +25,6 @@
                                 {% endif %}
                             </div>
                         {% endif %}
-                    <div class="flex flex-row gap-x-4 justify-center items-center mx-auto">
-                        <a class="mr-2 text-blue-300" href="{% url 'profile' object.author %}">{{ object.author }}</a>
-                        <small class="text-blue-300">{{ object.published|date:"F d, Y" }}</small>
                     </div>
                     <div>
                         <a class="p-1" style="font-size: 22px" href="/{{object.slug}}">
