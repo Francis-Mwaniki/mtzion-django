@@ -16,6 +16,7 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     status = models.CharField(max_length=100,choices=STATUS, default='regular')
     description = models.CharField(max_length=600,blank=True,default="")
+    image = models.ImageField(default='default/user.png', upload_to=image_upload_to)
     
     
     def __str__(self):
