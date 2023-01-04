@@ -11,7 +11,7 @@
                     
                     <div class="flex flex-row gap-x-4 justify-center items-center mx-auto">
                         <a class="mr-2 text-blue-300 bg-slate-800 rounded p-1" href="{% url 'profile' object.author %}">{{ object.author }}</a>
-                        <small class="text-blue-300">{{ object.published|date:"F d, Y" }}</small>
+                        <small class="text-blue-300 border-b border-white">{{ object.published|date:"F d, Y" }}</small>
                     </div>
                     <div class="p-3">
                         {% if object.author == user %}
