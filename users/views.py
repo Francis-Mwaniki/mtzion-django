@@ -20,11 +20,10 @@ from .models import SubscribedUsers
 
 def subscribe(request):
     if request.method == 'POST':
-        name = request.POST.get('name', None)
         email = request.POST.get('email', None)
 
-        if not name or not email:
-            messages.error(request, "You must type legit name and email to subscribe to a Newsletter")
+        if  not email:
+            messages.error(request, "You must type legit  email to subscribe to a Newsletter")
             return redirect("/")
 
         if get_user_model().objects.filter(email=email).first():
@@ -43,7 +42,6 @@ def subscribe(request):
             return redirect("/")
 
         subscribe_model_instance = SubscribedUsers()
-        subscribe_model_instance.name = name
         subscribe_model_instance.email = email
         subscribe_model_instance.save()
         messages.success(request, f'{email} email was successfully subscribed to our newsletter!')
