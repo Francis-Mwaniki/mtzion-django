@@ -3,7 +3,7 @@
     <div class="text-white flex md:flex-row flex-col justify-center items-center  gap-7 mx-auto ">
     {% for object in objects %}
         <div class="">
-            <article class="flex flex-col justify-center items-center mx-auto">
+            <topic class="flex flex-col justify-center items-center mx-auto">
                 <div class=" rounded ring-1 ring-white">
                     <a href="/{{object.slug}}">
                         <img class=" object-cover rounded h-40 w-full " src="{{ object.image.url }}">
@@ -20,8 +20,8 @@
                                     <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'series_update' object.slug %}">Update</a>
                                     <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'series_delete' object.slug %}">Delete</a>                   
                                 {% else %}
-                                    <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'article_update' object.series.slug  object.article_slug %}">Update</a>
-                                    <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'article_delete' object.series.slug  object.article_slug %}">Delete</a>                      
+                                    <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'topic_update' object.series.slug  object.topic_slug %}">Update</a>
+                                    <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'topic_delete' object.series.slug  object.topic_slug %}">Delete</a>                      
                                 {% endif %}
                             </div>
                         {% endif %}
@@ -37,7 +37,7 @@
                     </div>
                    
                 </div>
-            </article>
+            </topic>
         </div>
     {% endfor %}
     </div>
