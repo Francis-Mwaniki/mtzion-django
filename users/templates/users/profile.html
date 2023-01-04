@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="text-white" style="min-height:65vh;">
-    <legend class="border-b mb-4">Profile Information:</legend>
+    <legend class="border-b mb-4 text-2xl text-center text-blue-200">Profile Information:</legend>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="">
@@ -18,7 +18,7 @@
 
         {% if user.username == form.instance.username %}
             <fieldset class="">
-                <legend class="border-b mb-4">Edit Profile Information</legend>
+                <legend class="border-b mb-4 text-2xl text-center text-blue-200">Edit Profile Information</legend>
                
                     <div class=" mb-0">
                         {{ form.username|as_crispy_field }}
