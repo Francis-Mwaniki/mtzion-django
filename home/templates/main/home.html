@@ -8,6 +8,10 @@
                     <a href="/{{object.slug}}">
                         <img class=" object-cover rounded h-40 w-full " src="https://media.istockphoto.com/id/1007668632/photo/overhead-image-of-traditional-jewish-and-middle-eastern-food-falafel-fattoush-tabouli.jpg?b=1&s=170667a&w=0&k=20&c=BxofHGqmKSht0Od8KLZLBVyFKD0GEhHHNWAYx7OxdX4=">
                     </a>
+                    <div class="flex flex-row gap-x-4 justify-center items-center mx-auto">
+                        <a class="mr-2 text-white" href="{% url 'profile' object.author %}">{{ object.author }}</a>
+                        <small class="text-blue-300">{{ object.published|date:"F d, Y" }}</small>
+                    </div>
                     <div>
                         <a class="p-1" style="font-size: 22px" href="/{{object.slug}}">
                             {{ object.title }}
