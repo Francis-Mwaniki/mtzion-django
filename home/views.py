@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import TopicSeries, Topics
+from users.views import profile
 
 # Create your views here.
 def home(request):
@@ -22,4 +23,12 @@ def topic(request, series: str, topic: str):
     return render(request=request,
                   template_name='main/article.html',
                   context={"object": matching_topic}
-                  )    
+                  )
+def nav(request,username):
+    username = profile()
+    print(username)
+    return render(
+        request=request,
+                  template_name='main/article.html',
+                  context={"object":username}
+    )        
