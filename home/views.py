@@ -1,7 +1,12 @@
+import os
+from uuid import uuid4
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import TopicSeries, Topics
 from .decorators import user_is_superuser
+from django.conf import settings
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from users.views import profile
 from .forms import SeriesCreateForm,TopicsCreateForm,TopicsUpdateForm,SeriesUpdateForm
 # Create your views here.
@@ -146,3 +151,34 @@ def topic_delete(request, series, topics):
                 "type": "topics"
                 }
             )          
+        
+@csrf_exempt
+@user_is_superuser
+def upload_image(request, series: str=None, topic: str=None):
+    if request.method != "POST":
+        return JsonResponse({'Error Message': "Wrong request"})
+
+    # If it's not series and not topic, handle it differently
+    matching_topic = Topics.objects.filter(series__slug=series, topic_slug=topic).first()
+    if not matching_topic:
+        return JsonResponse({'Error Message': f"Wrong series ({series}) or topic ({topic})"})
+
+    file_obj = request.FILES['file']
+    file_name_suffix = file_obj.name.split(".")[-1]
+    if file_name_suffix not in ["jpg", "png", "gif", "jpeg"]:
+        return JsonResponse({"Error Message": f"Wrong file suffix ({file_name_suffix}), supported are .jpg, .png, .gif, .jpeg"})
+
+    file_path = os.path.join(settings.MEDIA_ROOT, 'TopicSeries', matching_topic.slug, file_obj.name)
+    
+    if os.path.exists(file_path):
+        file_obj.name = str(uuid4()) + '.' + file_name_suffix
+        file_path = os.path.join(settings.MEDIA_ROOT, 'TopicSeries', matching_topic.slug, file_obj.name)
+        
+    with open(file_path, 'wb+') as f:
+        for chunk in file_obj.chunks():
+            f.write(chunk)
+
+        return JsonResponse({
+            'message': 'Image uploaded successfully',
+            'location': os.path.join(settings.MEDIA_URL, 'TopicSeries', matching_topic.slug, file_obj.name)
+        })   
