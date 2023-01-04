@@ -71,7 +71,7 @@ def profile(request,username):
         if form.is_valid():
             user_form = form.save()
             
-            messages.success(request,f'{user_form} Your has been updated')
+            messages.success(request,f'{user_form} Your profiles has been updated')
             return redirect('profile',user_form.username)
         for error in list(form.errors.values()):
                messages.error(request,error)
