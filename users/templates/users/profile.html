@@ -14,7 +14,7 @@
                 <p class="text-gray-200">{{ form.instance.email }}</p>
                 <p class="text-gray-200">{{ form.instance.description }}</p>
             </div>
-            <img class="rounded-full w-20 h-20", src="{{ form.instance.image.url }}">
+            <img class="rounded-full w-20 h-20" src="{{ form.instance.image.url }}">
         </div>
 
         {% if user.username == form.instance.username %}
