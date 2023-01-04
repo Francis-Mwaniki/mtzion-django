@@ -44,9 +44,13 @@ INSTALLED_APPS = [
     'crispy_forms',
     "crispy_tailwind",
     'captcha',
+     'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
-
+SOCIALACCOUNT_LOGIN_ON_GET=True
 
 RECAPTCHA_PUBLIC_KEY = '6Lc7ZMsjAAAAAA7v6TEyoHb0hADukccenFhrQ8e_'
 RECAPTCHA_PRIVATE_KEY = '6Lc7ZMsjAAAAAAZkoflOnfcrGtVLmWiKABhPLklg'
@@ -113,8 +117,21 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
-"AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']" 
+"AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend', 'allauth.account.auth_backends.AuthenticationBackend']" 
 
+SITE_ID = 1
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {

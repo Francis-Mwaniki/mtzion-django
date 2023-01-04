@@ -1,5 +1,6 @@
 {% extends "main/header.html" %}
 {% block content %}
+{% load socialaccount %}
 {% load crispy_forms_tags %}
     <div class=" rounded sm:ring-1 ring-blue-600 p-5">
         <form method="POST" class="">
@@ -10,6 +11,12 @@
             </fieldset>
             <div class="pt-2">
                 <button class="px-16 py-2 hover:bg-gray-700 rounded bg-indigo-600 text-white flex justify-center items-center mx-auto" type="submit">Sign In</button>
+                <button class="px-16 py-2 hover:bg-gray-700 rounded bg-indigo-600 text-white flex justify-center items-center mx-auto">
+                    <a href="{% provider_login_url 'google'%}?next=/">
+                        <i class="fab fa-google"></i>
+                        Login with Google
+                    </a>
+                </button>
             </div>
         </form>
         <div class=" pt-3  flex justify-center items-center mx-auto gap-x-4">
