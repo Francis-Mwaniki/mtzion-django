@@ -38,7 +38,7 @@ class Topics(models.Model):
     speaker = models.CharField(max_length=255)
     content =  HTMLField(blank=True, default="")
     topic_slug =models.SlugField("Topic slug",unique=True,blank=False, null=False)
-    series = models.ForeignKey(TopicSeries,default="",on_delete=models.SET_DEFAULT)
+    series = models.ForeignKey(TopicSeries,default="",on_delete=models.CASCADE)
     author = models.ForeignKey(get_user_model(), default=1, on_delete=models.SET_DEFAULT)
     image = models.ImageField(default='default/car.png', upload_to=image_upload_to, max_length=255)
     published = models.DateTimeField('Date published', default=timezone.now)
