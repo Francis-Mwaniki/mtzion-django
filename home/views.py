@@ -122,7 +122,7 @@ def topic_update(request, series, topic):
         form = TopicsUpdateForm(request.POST, request.FILES, instance=matching_topic)
         if form.is_valid():
             form.save()
-            return redirect(f'/{matching_topic.slug}')
+            return redirect('home')
     
     else:
         form = TopicsUpdateForm(instance=matching_topic)
