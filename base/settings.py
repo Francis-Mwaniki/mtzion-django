@@ -12,21 +12,24 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
+from decouple import config
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-cx+h&o&f!7ubopf6l#2#dam!p7&5yekz6@d#8db$+zje1iwt8@"
 
-# SECURITY WARNING: don't run with debug turned on in production!
+SECRET_KEY =SECRET_KEY = os.getenv('SECRET_KEY')
+
+#DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS =os.getenv('ALLOWED_HOSTS').split(' ')
 
 # Application definition
 
@@ -65,6 +68,7 @@ CRISPY_TEMPLATE_PACK = "tailwind"
 AUTH_USER_MODEL = "users.CustomUser"
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+      'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -72,6 +76,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = "base.urls"
 
@@ -97,22 +102,25 @@ WSGI_APPLICATION = "base.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+
+
+
 # DATABASES = {
 #     "default": {
-#        'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'railway',
-#         'USER': 'postgres',
-#         'PASSWORD': 'elAbCbV7K4jRRCoxSPS2',
-#         'HOST': 'containers-us-west-123.railway.app',
-#         'PORT': '7278',
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
 #     }
 # }
+DATABASES = {
+    "default": {
+       'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'UkHW2FLCKVRBwH7KWb5m',
+        'HOST': 'containers-us-west-180.railway.app',
+        'PORT': '7603',
+    }
+}
 
 
 # Password validation
