@@ -24,6 +24,10 @@ class TopicSeries(models.Model):
     #     return self.slug
     
 class Topics(models.Model):
+    def image_upload_to(self, instance=None):
+        if instance:
+            return os.path.join('ArticleSeries', slugify(self.series.slug), slugify(self.article_slug), instance)
+        return None
     title = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255, default="",blank=True)
     speaker = models.CharField(max_length=255)
@@ -31,6 +35,7 @@ class Topics(models.Model):
     topic_slug =models.SlugField("Topic slug",unique=True,blank=False, null=False)
     series = models.ForeignKey(TopicSeries,default="",on_delete=models.SET_DEFAULT)
     author = models.ForeignKey(get_user_model(), default=1, on_delete=models.SET_DEFAULT)
+    image = models.ImageField(default='default/user.png')
     published = models.DateTimeField('Date published', default=timezone.now)
     modified = models.DateTimeField('Date modified', default=timezone.now)
     
