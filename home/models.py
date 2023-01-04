@@ -31,7 +31,7 @@ class TopicSeries(models.Model):
 class Topics(models.Model):
     def image_upload_to(self, instance=None):
         if instance:
-            return os.path.join('TopicSeries', slugify(self.series.slug), slugify(self.article_slug), instance)
+            return os.path.join('TopicSeries', slugify(self.series.slug), slugify(self.topic_slug), instance)
         return None
     title = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255, default="",blank=True)
