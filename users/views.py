@@ -245,3 +245,8 @@ def profile(request,username):
         form.fields['description'].widget.attrs={'row':2}
         return render(request,'users/profile.html',context={'form':form})
     return redirect('home')           
+
+
+def signup_redirect(request):
+    messages.error(request, "Something wrong here, it may be that you already have account!")
+    return redirect("home")
