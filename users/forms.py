@@ -5,7 +5,20 @@ from django.contrib.auth.forms import AuthenticationForm
 from captcha import fields
 from captcha import widgets
 from django.contrib.auth.forms import SetPasswordForm
+from django.contrib.auth.forms import PasswordResetForm
 
+class PasswordResetForm(PasswordResetForm):
+    def __init__(self, *args, **kwargs):
+        super(PasswordResetForm, self).__init__(*args, **kwargs)
+            # captcha = ReCaptchaField(widget=R())
+    captcha = fields.ReCaptchaField(
+    widget=widgets.ReCaptchaV2Checkbox(
+        attrs={
+           
+        }
+    )
+)
+        
 class UseRegistrationForm(UserCreationForm):
     email = forms.EmailField(help_text='A valid Email Please!',required=True)
     
