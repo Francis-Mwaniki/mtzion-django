@@ -1,16 +1,16 @@
 {% extends "main/header.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <div class="content-section">
+    <div class="p-2 rounded sm:ring-1 ring-blue-300">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">New {{ object }}</legend>
+            <fieldset class="flex flex-col justify-center items-center mx-auto gap-y-2">
+                <legend class="border-b text-white mb-4">New {{ object }}</legend>
                 {{ form|crispy }}
                 {{ form.media }}
             </fieldset>
-            <div class="form-group">
-                <button class="btn btncolor" type="submit">Publish</button>
+            <div class="flex justify-center items-center mx-auto gap-y-2">
+                <button class="px-10 py-3 rounded bg-indigo-600" type="submit">Publish</button>
             </div>
         </form>
     </div>
