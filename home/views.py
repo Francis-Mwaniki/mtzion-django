@@ -8,7 +8,39 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from users.views import profile
-from .forms import SeriesCreateForm,TopicsCreateForm,TopicsUpdateForm,SeriesUpdateForm
+from .forms import SeriesCreateForm,TopicsCreateForm,TopicsUpdateForm,SeriesUpdateForm,NewsletterForm
+from django.contrib import messages
+from django.core.mail import EmailMessage
+from users.models import SubscribedUsers
+
+
+@user_is_superuser
+def newsletter(request):
+    if request.method == 'POST':
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data.get('subject')
+            receivers = form.cleaned_data.get('receivers').split(',')
+            email_message = form.cleaned_data.get('message')
+
+            mail = EmailMessage(subject, email_message, f"PyLessons <{request.user.email}>", bcc=receivers)
+            mail.content_subtype = 'html'
+
+            if mail.send():
+                messages.success(request, "Email sent successfully")
+            else:
+                messages.error(request, "There was an error sending email")
+
+        else:
+            for error in list(form.errors.values()):
+                messages.error(request, error)
+
+        return redirect('/')
+
+    form = NewsletterForm()
+    form.fields['receivers'].initial = ','.join([active.email for active in SubscribedUsers.objects.all()])
+    return render(request=request, template_name='main/newsletter.html', context={'form': form})
+
 # Create your views here.
 def home(request):
     matching_series = TopicSeries.objects.all()
