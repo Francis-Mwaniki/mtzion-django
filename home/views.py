@@ -29,6 +29,6 @@ def nav(request,username):
     print(username)
     return render(
         request=request,
-                  template_name='main/article.html',
+                  template_name='main/navbar.html',
                   context={"object":username}
     )        
