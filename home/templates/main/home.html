@@ -13,6 +13,15 @@
                         <a class="mr-2 text-blue-300" href="{% url 'profile' object.author %}">{{ object.author }}</a>
                         <small class="text-blue-300">{{ object.published|date:"F d, Y" }}</small>
                     </div>
+                    
+                    <div>
+                        <a class="p-1" style="font-size: 22px" href="/{{object.slug}}">
+                            {{ object.title }}
+                        </a>
+                        <a href="/{{object.slug}}" style="text-decoration: none;">
+                            <p class="p-1">{{ object.subtitle }}</p>
+                        </a>
+                    </div>
                     <div>
                         {% if object.author == user %}
                             <div style="float: right">
@@ -25,14 +34,6 @@
                                 {% endif %}
                             </div>
                         {% endif %}
-                    </div>
-                    <div>
-                        <a class="p-1" style="font-size: 22px" href="/{{object.slug}}">
-                            {{ object.title }}
-                        </a>
-                        <a href="/{{object.slug}}" style="text-decoration: none;">
-                            <p class="p-1">{{ object.subtitle }}</p>
-                        </a>
                     </div>
                 </div>
             </article>
