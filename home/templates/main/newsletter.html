@@ -1,4 +1,3 @@
-<-- django_project/main/templates/main/newsletter.html -->
 {% extends "main/header.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
@@ -7,7 +6,7 @@
             {% csrf_token %}
             {{ form|crispy  }}
             {{ form.media  }}
-            <div class="flex justify-center items-center mx-auto gap-y-2">
+            <div class="form-group">
                 <button class="px-10 py-3 rounded bg-indigo-600" type="submit">Send</button>
             </div>
         </form>
