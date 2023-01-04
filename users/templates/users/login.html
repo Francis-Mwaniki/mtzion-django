@@ -1,7 +1,7 @@
 {% extends "main/header.html" %}
 {% block content %}
 {% load crispy_forms_tags %}
-    <div class=" rounded sm:ring-1 ring-blue-600 p-2">
+    <div class=" rounded sm:ring-1 ring-blue-600 p-5">
         <form method="POST" class="">
             {% csrf_token %}
             <fieldset class="flex gap-y-10 flex-col mx-auto">
@@ -9,14 +9,14 @@
                 <div class="text-slate-100">{{ form|crispy }}</div>
             </fieldset>
             <div class="pt-2">
-                <button class="px-16 py-2 rounded bg-indigo-600 text-white flex justify-center items-center mx-auto" type="submit">Sign In</button>
+                <button class="px-16 py-2 hover:bg-gray-700 rounded bg-indigo-600 text-white flex justify-center items-center mx-auto" type="submit">Sign In</button>
             </div>
         </form>
-        <div class=" pt-3">
+        <div class=" pt-3  flex justify-center items-center mx-auto gap-x-4">
             <small class="text-gray-200">
-                Don't have An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
+                Don't have An Account? <a class="" href="{% url 'register' %}">Sign Up</a>
             </small>
-            <small class="text-gray-200">
+            <small class="text-blue-300 ">
                 <a href="/">Forgot password?</a>
             </small>
         </div>
