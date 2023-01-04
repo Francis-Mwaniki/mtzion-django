@@ -46,7 +46,7 @@ def password_reset_request(request):
                 else:
                     messages.error(request, "Problem sending reset password email, <b>SERVER PROBLEM</b>")
 
-            return redirect('homepage')
+            return redirect('home')
 
         for key, error in list(form.errors.items()):
             if key == 'captcha' and error[0] == 'This field is required.':
@@ -60,8 +60,31 @@ def password_reset_request(request):
         context={"form": form}
         )
 def passwordResetConfirm(request, uidb64, token):
-    return redirect("home")
+    User = get_user_model()
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except:
+        user = None
 
+    if user is not None and account_activation_token.check_token(user, token):
+        if request.method == 'POST':
+            form = SetPasswordForm(user, request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Your password has been set. You may go ahead and <b>log in </b> now.")
+                return redirect('home')
+            else:
+                for error in list(form.errors.values()):
+                    messages.error(request, error)
+
+        form = SetPasswordForm(user)
+        return render(request, 'password_reset_confirm.html', {'form': form})
+    else:
+        messages.error(request, "Link is expired")
+
+    messages.error(request, 'Something went wrong, redirecting back to home')
+    return redirect("home")
 
 @login_required
 def password_change(request):
