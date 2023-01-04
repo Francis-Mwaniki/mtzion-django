@@ -11,7 +11,6 @@
                 <h2 class="">{{ form.instance.username }}
                     <small class="text-gray-200">({{ form.instance.status }})</small>
                 </h2>
-                <p class="text-gray-200">{{ form.instance.first_name }} {{ form.instance.last_name }}</p>
                 <p class="text-gray-200">{{ form.instance.email }}</p>
                 <p class="text-gray-200">{{ form.instance.description }}</p>
             </div>
@@ -20,14 +19,11 @@
         {% if user.username == form.instance.username %}
             <fieldset class="">
                 <legend class="border-b mb-4">Edit Profile Information</legend>
-                <div class="form-row">
+               
                     <div class=" mb-0">
-                        {{ form.first_name|as_crispy_field }}
+                        {{ form.username|as_crispy_field }}
                     </div>
-                    <div class=" mb-0">
-                        {{ form.last_name|as_crispy_field }}
-                    </div>
-                </div> 
+                  
                 {{ form.email|as_crispy_field }}
                 {{ form.description|as_crispy_field }}
 
