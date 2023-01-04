@@ -8,12 +8,12 @@ import os
 class TopicSeries(models.Model):
     def image_upload_to(self, instance=None):
         if instance:
-            return os.path.join('ArticleSeries', slugify(self.slug), instance)
+            return os.path.join('TopicSeries', slugify(self.slug), instance)
         return None
     title = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255)
     slug = models.SlugField("Topic series", null=True,unique=True, blank=False)
-    image = models.ImageField(default='default/car.png', upload_to=image_upload_to, max_length=255)
+    image = models.ImageField(default='media/default/car.png', upload_to=image_upload_to, max_length=255)
     author = models.ForeignKey(get_user_model(), default=1, on_delete=models.SET_DEFAULT)
     published = models.DateField("Date published",default=timezone.now)
     
@@ -31,7 +31,7 @@ class TopicSeries(models.Model):
 class Topics(models.Model):
     def image_upload_to(self, instance=None):
         if instance:
-            return os.path.join('ArticleSeries', slugify(self.series.slug), slugify(self.article_slug), instance)
+            return os.path.join('TopicSeries', slugify(self.series.slug), slugify(self.article_slug), instance)
         return None
     title = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255, default="",blank=True)
@@ -40,7 +40,7 @@ class Topics(models.Model):
     topic_slug =models.SlugField("Topic slug",unique=True,blank=False, null=False)
     series = models.ForeignKey(TopicSeries,default="",on_delete=models.SET_DEFAULT)
     author = models.ForeignKey(get_user_model(), default=1, on_delete=models.SET_DEFAULT)
-    image = models.ImageField(default='default/car.png', upload_to=image_upload_to, max_length=255)
+    image = models.ImageField(default='media/default/car.png', upload_to=image_upload_to, max_length=255)
     published = models.DateTimeField('Date published', default=timezone.now)
     modified = models.DateTimeField('Date modified', default=timezone.now)
     
