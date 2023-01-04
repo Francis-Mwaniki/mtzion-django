@@ -39,3 +39,9 @@ class UserLoginForm(AuthenticationForm):
         }
     )
 )
+class UseUpdateForm(forms.ModelForm):
+    email = forms.EmailField(required=True)
+    
+    class Meta:
+        model = get_user_model()
+        fields = ['username','email','description']

@@ -1,0 +1,42 @@
+<!-- django_project/users/templates/users/profile.html -->
+{% extends "main/header.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="text-white" style="min-height:65vh;">
+    <legend class="border-b mb-4">Profile Information:</legend>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="">
+            <div class="">
+                <h2 class="">{{ form.instance.username }}
+                    <small class="text-gray-200">({{ form.instance.status }})</small>
+                </h2>
+                <p class="text-gray-200">{{ form.instance.first_name }} {{ form.instance.last_name }}</p>
+                <p class="text-gray-200">{{ form.instance.email }}</p>
+                <p class="text-gray-200">{{ form.instance.description }}</p>
+            </div>
+        </div>
+
+        {% if user.username == form.instance.username %}
+            <fieldset class="">
+                <legend class="border-b mb-4">Edit Profile Information</legend>
+                <div class="form-row">
+                    <div class=" mb-0">
+                        {{ form.first_name|as_crispy_field }}
+                    </div>
+                    <div class=" mb-0">
+                        {{ form.last_name|as_crispy_field }}
+                    </div>
+                </div> 
+                {{ form.email|as_crispy_field }}
+                {{ form.description|as_crispy_field }}
+
+                <a href="/">Change password?</a>
+            </fieldset>
+            <div class="">
+                <button class="px-10 py-3 rounded bg-indigo-600" type="submit">Update</button>
+            </div>
+        {% endif %}
+    </form>
+</div>
+{% endblock content %}

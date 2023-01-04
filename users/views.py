@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model, login, logout, authenticate
-from .forms import UseRegistrationForm, UserLoginForm
+from .forms import UseRegistrationForm, UserLoginForm, UseUpdateForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from  .decorators import user_not_authenticated
@@ -64,3 +64,20 @@ def custom_login(request):
         template_name="users/login.html", 
         context={'form': form}
         )
+def profile(request,username):
+    if request.method=='POST':
+        user = request.user
+        form = UseUpdateForm(request.POST,request.FILES,instance=user)
+        if form.is_valid():
+            user_form = form.save()
+            
+            messages.success(request,f'{user_form} Your has been updated')
+            return redirect('profile',user_form.username)
+        for error in list(form.errors.values()):
+               messages.error(request,error)
+    user =get_user_model().objects.filter(username=username).first()
+    if user:
+        form = UseUpdateForm(instance=user)
+        form.fields['description'].widget.attrs={'row':2}
+        return render(request,'users/profile.html',context={'form':form})
+    return redirect('home')           
