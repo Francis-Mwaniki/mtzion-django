@@ -9,14 +9,14 @@ def home(request):
    
     return render(request=request,
                   template_name='main/home.html',
-                  context={"objects": matching_series}
+                  context={"objects": matching_series,"type": "series"}
                   )
 def series(request, series:str):
     matching_topics = Topics.objects.filter(topic_slug=series)
    
     return render(request=request,
                   template_name='main/home.html',
-                  context={"objects": matching_topics}
+                  context={"objects": matching_topics,"type": "topics"}
                   )
 def topic(request, series: str, topic: str):
     matching_topic = Topics.objects.filter(series__slug=series, topic_slug=topic).first()
