@@ -44,4 +44,4 @@ class UseUpdateForm(forms.ModelForm):
     
     class Meta:
         model = get_user_model()
-        fields = ['username','email','description']
+        fields = ['username','email','description','image']
