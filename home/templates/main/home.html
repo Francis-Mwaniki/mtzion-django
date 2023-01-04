@@ -3,7 +3,7 @@
     <div class="text-white flex md:flex-row flex-col justify-center items-center  gap-7 mx-auto ">
     {% for object in objects %}
         <div class="">
-            <article class="">
+            <article class="flex flex-col justify-center items-center mx-auto">
                 <div class=" rounded ring-1 ring-white">
                     <a href="/{{object.slug}}">
                         <img class=" object-cover rounded h-40 w-full " src="{{ object.image.url }}">
@@ -15,7 +15,7 @@
                     </div>
                     <div class="p-3">
                         {% if object.author == user %}
-                            <div style="float: right">
+                            <div class="flex flex-row gap-x-3 justify-center items-center mx-auto" >
                                 {% if type == "series" %}
                                     <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'series_update' object.slug %}">Update</a>
                                     <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'series_delete' object.slug %}">Delete</a>                   
@@ -26,7 +26,7 @@
                             </div>
                         {% endif %}
                     </div>
-                    <div>
+                    <div class="pt-4 flex flex-col justify-center items-center mx-auto">
                         <a class="p-1" style="font-size: 22px" href="/{{object.slug}}">
                             {{ object.title }}
                         </a>
