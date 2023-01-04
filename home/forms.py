@@ -21,7 +21,7 @@ class TopicsCreateForm(forms.ModelForm):
             "subtitle",
             "topic_slug",
             "content",
-            "notes",
+            "speaker",
             "series",
             "image",
         ]
