@@ -6,9 +6,14 @@ from django.template.defaultfilters import slugify
 import os
 # Create your models here.
 class TopicSeries(models.Model):
+    def image_upload_to(self, instance=None):
+        if instance:
+            return os.path.join('ArticleSeries', slugify(self.slug), instance)
+        return None
     title = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255)
     slug = models.SlugField("Topic series", null=True,unique=True, blank=False)
+    image = models.ImageField(default='default/car.png', upload_to=image_upload_to, max_length=255)
     author = models.ForeignKey(get_user_model(), default=1, on_delete=models.SET_DEFAULT)
     published = models.DateField("Date published",default=timezone.now)
     
