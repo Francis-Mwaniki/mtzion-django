@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import TopicSeries, Topics
 from users.views import profile
@@ -31,4 +31,23 @@ def nav(request,username):
         request=request,
                   template_name='main/navbar.html',
                   context={"object":username}
-    )        
+    )  
+    
+
+def new_series(request):
+    return redirect('/')
+
+def new_post(request):
+    return redirect('/')
+
+def series_update(request, series):
+    return redirect('/')
+
+def series_delete(request, series):
+    return redirect('/')
+
+def article_update(request, series, article):
+    return redirect('/')
+
+def article_delete(request, series, article):
+    return redirect('/')          
