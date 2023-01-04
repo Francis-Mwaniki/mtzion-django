@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <div class="p-2 rounded sm:ring-1 ring-blue-300">
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" action="">
             {% csrf_token %}
             <fieldset class="flex flex-col justify-center items-center mx-auto gap-y-2">
                 <legend class="border-b text-white mb-4">New {{ object }}</legend>
