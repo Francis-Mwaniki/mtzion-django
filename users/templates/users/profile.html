@@ -37,7 +37,7 @@
                 {{ form.email|as_crispy_field }}
                 {{ form.description|as_crispy_field }}
 
-                <a href="/">Change password?</a>
+                <a href="{% url 'password_change' %}">Change password?</a>
             </fieldset>
             <div class="">
                 <button class="px-20 flex justify-center items-center mx-auto  py-3 rounded bg-indigo-600" type="submit">Update</button>
