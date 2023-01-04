@@ -10,6 +10,6 @@ urlpatterns = [
    path("<series>/update/", views.series_update, name="series_update"),
    path("<series>/delete/", views.series_delete, name="series_delete"),
    path("<series>/<topic>/update/", views.topic_update, name="topic_update"),
-   path('<series>/<topic>/upload_image/', views.upload_image, name="upload_image"),
+   path('<series>/<topic>/update/upload_image/', views.upload_image, name="upload_image"),
    path("<series>/<topic>/delete/", views.topic_delete, name="topic_delete"),
    ]
