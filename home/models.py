@@ -1,11 +1,13 @@
 from django.db import models
 from django.utils import timezone
 from tinymce.models import HTMLField
+from django.contrib.auth import get_user_model
 # Create your models here.
 class TopicSeries(models.Model):
     title = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255)
     slug = models.SlugField("Topic series", null=True,unique=True, blank=False)
+    author = models.ForeignKey(get_user_model(), default=1, on_delete=models.SET_DEFAULT)
     published = models.DateField("Date published",default=timezone.now)
     
     class Meta:
@@ -26,6 +28,7 @@ class Topics(models.Model):
     content =  HTMLField(blank=True, default="")
     topic_slug =models.SlugField("Topic slug",unique=True,blank=False, null=False)
     series = models.ForeignKey(TopicSeries,default="",on_delete=models.SET_DEFAULT)
+    author = models.ForeignKey(get_user_model(), default=1, on_delete=models.SET_DEFAULT)
     published = models.DateTimeField('Date published', default=timezone.now)
     modified = models.DateTimeField('Date modified', default=timezone.now)
     
