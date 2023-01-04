@@ -21,20 +21,21 @@
                         <a href="/{{object.slug}}" style="text-decoration: none;">
                             <p class="p-1">{{ object.subtitle }}</p>
                         </a>
+                        <div class="pt-3">
+                            {% if object.author == user %}
+                                <div style="float: right">
+                                    {% if type == "series" %}
+                                        <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'series_update' object.slug %}">Update</a>
+                                        <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'series_delete' object.slug %}">Delete</a>                   
+                                    {% else %}
+                                        <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'article_update' object.series.slug  object.article_slug %}">Update</a>
+                                        <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'article_delete' object.series.slug  object.article_slug %}">Delete</a>                      
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
-                    <div>
-                        {% if object.author == user %}
-                            <div style="float: right">
-                                {% if type == "series" %}
-                                    <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'series_update' object.slug %}">Update</a>
-                                    <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'series_delete' object.slug %}">Delete</a>                   
-                                {% else %}
-                                    <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'article_update' object.series.slug  object.article_slug %}">Update</a>
-                                    <a class="px-5 py-2 rounded bg-indigo-600 text-white" href="{% url 'article_delete' object.series.slug  object.article_slug %}">Delete</a>                      
-                                {% endif %}
-                            </div>
-                        {% endif %}
-                    </div>
+                   
                 </div>
             </article>
         </div>
