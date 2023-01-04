@@ -10,7 +10,39 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.core.mail import EmailMessage
 from .tokens import account_activation_token
+from .forms import SetPasswordForm
+from .forms import PasswordResetForm
 
+
+
+@user_not_authenticated
+def password_reset_request(request):
+    form = PasswordResetForm()
+    return render(
+        request=request, 
+        template_name="password_reset.html", 
+        context={"form": form}
+        )
+
+def passwordResetConfirm(request, uidb64, token):
+    return redirect("home")
+
+
+@login_required
+def password_change(request):
+    user = request.user
+    if request.method == 'POST':
+        form = SetPasswordForm(user, request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your password has been changed")
+            return redirect('login')
+        else:
+            for error in list(form.errors.values()):
+                messages.error(request, error)
+
+    form = SetPasswordForm(user)
+    return render(request, 'password_reset_confirm.html', {'form': form})
 
 def activate(request, uidb64, token):
     User = get_user_model()
