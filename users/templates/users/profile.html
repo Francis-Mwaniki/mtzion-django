@@ -6,8 +6,8 @@
     <legend class="border-b mb-4 text-2xl text-center text-blue-200">Profile Information:</legend>
     <form method="POST" enctype="multipart/form-data" class="rounded sm:ring-1 ring-blue-300 p-2">
         {% csrf_token %}
-        <div class="">
-            <div class=" flex justify-center items-center mx-auto flex-row">
+        <div class="flex justify-center items-center mx-auto flex-row gap-x-4 px-2">
+            <div class=" ">
                 <h2 class="">{{ form.instance.username }}
                     <small class="text-gray-200">({{ form.instance.status }})</small>
                 </h2>
