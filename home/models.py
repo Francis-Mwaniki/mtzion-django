@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from tinymce.models import HTMLField
 from django.contrib.auth import get_user_model
+from django.template.defaultfilters import slugify
+import os
 # Create your models here.
 class TopicSeries(models.Model):
     title = models.CharField(max_length=255)
