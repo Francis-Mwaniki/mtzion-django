@@ -50,7 +50,7 @@ def home(request):
                   context={"objects": matching_series,"type": "series"}
                   )
 def series(request, series:str):
-    matching_topics = Topics.objects.filter(topic_slug=series)
+    matching_topics = Topics.objects.filter(series__slug=series).all()
    
     return render(request=request,
                   template_name='main/home.html',
@@ -59,7 +59,7 @@ def series(request, series:str):
 def topic(request, series: str, topic: str):
     matching_topic = Topics.objects.filter(series__slug=series, topic_slug=topic).first()
     return render(request=request,
-                  template_name='main/article.html',
+                  template_name='main/topic.html',
                   context={"object": matching_topic}
                   )
 def nav(request,username):

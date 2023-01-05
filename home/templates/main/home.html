@@ -107,7 +107,7 @@
     </nav>
 
     <div
-      class="container flex flex-col px-6  mx-auto space-y-6 lg:h-[32rem] py-64 lg:py-16 lg:flex-row lg:items-center"
+      class="container flex flex-col px-6  mx-auto space-y-6 lg:h-[32rem] py-16 lg:py-16 lg:flex-row lg:items-center"
     >
       <div class="w-full lg:w-1/2">
         <div class="lg:max-w-lg">
@@ -207,17 +207,18 @@
         />
       </div>
     </div>
+    <h1 class="text-lg pb-4 font-bold text-center lg:text-2xl">
+      POPULAR TOPICS
+  </h1>
   </section>
-  <h1 class="text-lg pb-4 font-bold text-center lg:text-2xl">
-    POPULAR TOPICS
-</h1>
-    <div class="text-white flex md:flex-row flex-col justify-center items-center  gap-7 mx-auto ">
+
+    <div class="text-white flex md:flex-row flex-col justify-center items-center  gap-x-7 mx-auto ">
     {% for object in objects %}
         <div class="">
             <topic class="flex flex-col justify-center items-center mx-auto">
                 <div class=" rounded ring-1 ring-white">
                     <a href="/{{object.slug}}">
-                        <img class=" object-cover rounded h-40 w-full " src="{{ object.image.url }}">
+                        <img class=" object-cover rounded w-full md:h-40 mx-auto " src="{{ object.image.url }}">
                     </a>
                     
                     <div class="flex flex-row gap-x-4 justify-center items-center mx-auto">
