@@ -125,7 +125,7 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
-"AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend', 'allauth.account.auth_backends.AuthenticationBackend']" 
+"AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']" 
 
 SITE_ID = 1
 

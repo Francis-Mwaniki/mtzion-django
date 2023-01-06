@@ -168,12 +168,12 @@ def topic_update(request, series, topic):
                 }
             )
 
-def topic_delete(request, series, topics):
-    matching_topics = Topics.objects.filter(series__slug=series, topics_slug=topics).first()
+def topic_delete(request, series, topic):
+    matching_topics = Topics.objects.filter(series__slug=series, topic_slug=topic).first()
 
     if request.method == "POST":
         matching_topics.delete()
-        return redirect('/')
+        return redirect('home')
     else:
         return render(
             request=request,

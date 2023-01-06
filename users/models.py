@@ -23,7 +23,7 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     status = models.CharField(max_length=100,choices=STATUS, default='regular')
     description = models.CharField(max_length=600,blank=True,default="")
-    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    image = models.ImageField(upload_to='uploads/', blank=True, null=True, default='uploads/car.png')
     
     
     def __str__(self):

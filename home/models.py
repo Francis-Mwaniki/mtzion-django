@@ -12,7 +12,7 @@ class TopicSeries(models.Model):
     title = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255)
     slug = models.SlugField("Topic series", null=True,unique=True, blank=False)
-    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    image = models.ImageField(upload_to='uploads/',default='uploads/car.png', blank=False, null=False)
     author = models.ForeignKey(get_user_model(), default=1, on_delete=models.SET_DEFAULT)
     published = models.DateField("Date published",default=timezone.now)
     
@@ -40,7 +40,7 @@ class Topics(models.Model):
     topic_slug =models.SlugField("Topic slug",unique=True,blank=False, null=False)
     series = models.ForeignKey(TopicSeries,default="",on_delete=models.CASCADE)
     author = models.ForeignKey(get_user_model(), default=1, on_delete=models.SET_DEFAULT)
-    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    image = models.ImageField(upload_to='uploads/', default='uploads/car.png', blank=False, null=False)
     published = models.DateTimeField('Date published', default=timezone.now)
     modified = models.DateTimeField('Date modified', default=timezone.now)
     

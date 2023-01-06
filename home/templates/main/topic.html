@@ -5,13 +5,13 @@
     <div class="text-white ">
         <div class="text-white max-w-5xl rounded p-1">
             <div>
-                <h1 class=" text-center">{{ object.title }} <span class="px-3 text-indigo-600"> {{object.speaker}}</span> </h1>
+                <h1 class=" text-center">{{ object.title }} <span class="px-3 text-indigo-600 rounded-full bg-slate-700 p-1"> {{object.speaker}}</span> </h1>
                 <h2 class="text-center">{{ object.subtitle }}</h2>
             </div>
         </div>
     </div>
     <div class="" >
-        <div class="text-white max-w-lg bg-slate-200 p-2 rounded" style="color:#ffff">
+        <div class="text-black max-w-lg bg-slate-500 p-2 rounded" style="color:#ffff">
             {{ object.content|safe }}
         </div>
     </div>
